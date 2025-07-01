@@ -49,10 +49,11 @@ public class JwtUtil {
         return extractExpiration(token).before(new Date());
     }
 
-    public String generateToken(UUID userId, String email, String userType) {
+    public String generateToken(UUID userId, String email, String userType, String userName) { // Adicionado userName
         Map<String, Object> claims = new HashMap<>();
-        claims.put("type", userType); 
+        claims.put("type", userType);
         claims.put("userId", userId.toString());
+        claims.put("name", userName); // Adicione o nome do usuário aos claims
         return createToken(claims, email);
     }
 

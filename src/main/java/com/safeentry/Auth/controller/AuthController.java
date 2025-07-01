@@ -61,7 +61,7 @@ public class AuthController {
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
                 // Passar o user.getId() para o generateToken
-                final String jwt = jwtUtil.generateToken(user.getId(), user.getEmail(), user.getTipoUsuario().name());
+                final String jwt = jwtUtil.generateToken(user.getId(), user.getEmail(), user.getTipoUsuario().name(), user.getNome());
                 return ResponseEntity.ok(new AuthResponse(jwt, user.getTipoUsuario().name(), user.getEmail(), user.getNome()));
             } else {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado após autenticação bem-sucedida.");
