@@ -1,7 +1,6 @@
 package com.safeentry.Auth.model;
 
-import jakarta.persistence.*; // Use jakarta.persistence para Spring Boot 3+
-// import org.hibernate.annotations.GenericGenerator;
+import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
@@ -27,9 +26,9 @@ public class User {
     private String email;
 
     @Column(name = "senha_hash", nullable = false)
-    private String senhaHash; // Corresponde a 'senha_hash' no banco de dados
+    private String senhaHash;
 
-    @Enumerated(EnumType.STRING) // Armazena o enum como String no banco de dados
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo_usuario", nullable = false, length = 20)
     private UserType tipoUsuario;
 

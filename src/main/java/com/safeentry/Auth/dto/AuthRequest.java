@@ -12,7 +12,6 @@ public class AuthRequest {
     @NotBlank(message = "Senha é obrigatória")
     private String senha;
 
-    // Getters e Setters
     public String getEmail() {
         return email;
     }

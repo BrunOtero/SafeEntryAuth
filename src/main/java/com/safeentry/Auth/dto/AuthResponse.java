@@ -14,7 +14,6 @@ public class AuthResponse {
         this.nome = nome;
     }
 
-    // Getters
     public String getToken() {
         return token;
     }

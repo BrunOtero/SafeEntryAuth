@@ -21,7 +21,7 @@ import com.safeentry.Auth.util.JwtUtil;
 public class SecurityConfig {
 
     private final JwtUtil jwtUtil;
-    private final UserService userService; // Injetar UserService
+    private final UserService userService;
 
     public SecurityConfig(JwtUtil jwtUtil, UserService userService) {
         this.jwtUtil = jwtUtil;
@@ -49,13 +49,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // Desabilita CSRF para APIs REST sem sessão
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api/auth/**").permitAll() // Permite acesso público aos endpoints de autenticação
-                .anyRequest().authenticated() // Todas as outras requisições exigem autenticação
+                .requestMatchers("/api/auth/**").permitAll()
+                .anyRequest().authenticated()
             )
             .sessionManagement(session -> session
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Sem estado de sessão (ideal para JWT)
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
             .addFilterBefore(jwtRequestFilter(), UsernamePasswordAuthenticationFilter.class); // Adiciona o filtro JWT
 

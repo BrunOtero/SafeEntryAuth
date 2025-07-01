@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.Base64;
-import java.util.UUID; // Importar UUID
+import java.util.UUID;
 
 @Component
 public class JwtUtil {
@@ -49,11 +49,11 @@ public class JwtUtil {
         return extractExpiration(token).before(new Date());
     }
 
-    public String generateToken(UUID userId, String email, String userType, String userName) { // Adicionado userName
+    public String generateToken(UUID userId, String email, String userType, String userName) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("type", userType);
         claims.put("userId", userId.toString());
-        claims.put("name", userName); // Adicione o nome do usuário aos claims
+        claims.put("name", userName);
         return createToken(claims, email);
     }
 
